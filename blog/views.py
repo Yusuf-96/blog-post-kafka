@@ -2,14 +2,14 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Post
-from .serializers import PostSerializers
+from .serializers import PostListSerializers, PostSerializers
 from rest_framework import status
 
 
 class CreatePostAPIView(APIView):
     def get(self, request):
         posts = Post.objects.all()
-        serializer = PostSerializers(posts, many=True)
+        serializer = PostListSerializers(posts, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request):
