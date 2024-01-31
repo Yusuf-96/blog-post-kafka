@@ -24,7 +24,7 @@ class CreatePostAPIView(APIView):
 
         response = {
             "status": status.HTTP_400_BAD_REQUEST,
-            "message": "You did not post yet",
+            "message": serializer.errors
         }
 
         return Response(response, status=status.HTTP_400_BAD_REQUEST)
